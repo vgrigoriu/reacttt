@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Square from './Square'
+import Board from './Board'
 import './App.css';
 
 class App extends Component {
@@ -9,9 +9,9 @@ class App extends Component {
         <div className="App-header">
           <h2>Tic Tac Toe</h2>
         </div>
-        <p className="App-intro">
-          <Square />
-        </p>
+        <div className="App-intro">
+          <Board />
+        </div>
       </div>
     );
   }
