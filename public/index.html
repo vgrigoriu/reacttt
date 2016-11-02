@@ -27,5 +27,17 @@
       To begin the development, run `npm start`.
       To create a production bundle, use `npm run build`.
     -->
+    <script>
+window.addEventListener('mousedown', function(e) {
+  document.body.classList.add('mouse-navigation');
+  document.body.classList.remove('kbd-navigation');
+});
+window.addEventListener('keydown', function(e) {
+  if (e.keyCode === 9) {
+    document.body.classList.add('kbd-navigation');
+    document.body.classList.remove('mouse-navigation');
+  }
+});
+</script>
   </body>
 </html>
