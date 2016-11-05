@@ -17,7 +17,7 @@ class Board extends Component {
 
   handleClick(i) {
     const squares = this.state.squares.slice();
-    squares[i] = this.state.xIsNext? 'X': '0';
+    squares[i] = this.currentPlayer();
     this.setState({
       squares,
       xIsNext: !this.state.xIsNext
@@ -25,7 +25,7 @@ class Board extends Component {
   }
 
   render() {
-    const status = 'Next player: X';
+    const status = `Next player: ${this.currentPlayer()}`;
     return (
       <div>
         <div className="status">{status}</div>
@@ -46,6 +46,10 @@ class Board extends Component {
         </div>
       </div>
     );
+  }
+
+  currentPlayer() {
+    return this.state.xIsNext? 'X': '0';
   }
 }
 
