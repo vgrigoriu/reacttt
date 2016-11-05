@@ -1,38 +1,15 @@
 import React, { Component } from 'react';
 import Square from './Square'
-import { calculateWinner } from './tictactoe'
 import './Board.css'
 
 class Board extends Component {
-  constructor() {
-    super();
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true
-    };
-  }
-
   renderSquare(i) {
-    return <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />;
-  }
-
-  handleClick(i) {
-    const squares = this.state.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-
-    squares[i] = this.currentPlayer();
-    this.setState({
-      squares,
-      xIsNext: !this.state.xIsNext
-    });
+    return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
   }
 
   render() {
     return (
       <div>
-        <div className="status">{this.getStatus()}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -50,19 +27,6 @@ class Board extends Component {
         </div>
       </div>
     );
-  }
-
-  getStatus() {
-    const winner = calculateWinner(this.state.squares);
-    if (winner) {
-      return `Winner: ${winner}`;
-    } else {
-      return `Next player: ${this.currentPlayer()}`;
-    }
-  }
-
-  currentPlayer() {
-    return this.state.xIsNext? 'X': '0';
   }
 }
 
