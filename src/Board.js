@@ -18,6 +18,10 @@ class Board extends Component {
 
   handleClick(i) {
     const squares = this.state.squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+
     squares[i] = this.currentPlayer();
     this.setState({
       squares,
