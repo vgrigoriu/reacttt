@@ -16,6 +16,12 @@ class Game extends Component {
 
   render() {
     const current = this.state.history[this.state.history.length-1];
+    const moves = this.state.history.map((step, move) => {
+      const text = move ? `Mutarea ${move}` : `Start`;
+      return (
+        <li key={move}><a>{text}</a></li>
+      );
+    });
     return (
       <div className="game">
         <div className="game-board">
@@ -23,7 +29,7 @@ class Game extends Component {
         </div>
         <div className="game-info">
           <div>{this.getStatus()}</div>
-          <ol>{/* TODO */}</ol>
+          <ol>{moves}</ol>
         </div>
       </div>
     );
