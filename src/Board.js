@@ -6,7 +6,8 @@ class Board extends Component {
   constructor() {
     super();
     this.state = {
-      squares: Array(9).fill(null)
+      squares: Array(9).fill(null),
+      xIsNext: true
     };
   }
 
@@ -16,8 +17,11 @@ class Board extends Component {
 
   handleClick(i) {
     const squares = this.state.squares.slice();
-    squares[i] = 'X';
-    this.setState({squares})
+    squares[i] = this.state.xIsNext? 'X': '0';
+    this.setState({
+      squares,
+      xIsNext: !this.state.xIsNext
+    });
   }
 
   render() {
