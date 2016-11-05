@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Square from './Square'
+import * as ttt from './tictactoe'
 import './Board.css'
 
 class Board extends Component {
@@ -25,7 +26,14 @@ class Board extends Component {
   }
 
   render() {
-    const status = `Next player: ${this.currentPlayer()}`;
+    const winner = ttt.calculateWinner(this.state.squares);
+    let status;
+    if (winner) {
+      status = `Winner: ${winner}`;
+    } else {
+      status = `Next player: ${this.currentPlayer()}`;
+    }
+
     return (
       <div>
         <div className="status">{status}</div>
