@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Square from './Square'
-import * as ttt from './tictactoe'
+import { calculateWinner } from './tictactoe'
 import './Board.css'
 
 class Board extends Component {
@@ -26,7 +26,7 @@ class Board extends Component {
   }
 
   render() {
-    const winner = ttt.calculateWinner(this.state.squares);
+    const winner = calculateWinner(this.state.squares);
     let status;
     if (winner) {
       status = `Winner: ${winner}`;
