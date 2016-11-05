@@ -30,17 +30,9 @@ class Board extends Component {
   }
 
   render() {
-    const winner = calculateWinner(this.state.squares);
-    let status;
-    if (winner) {
-      status = `Winner: ${winner}`;
-    } else {
-      status = `Next player: ${this.currentPlayer()}`;
-    }
-
     return (
       <div>
-        <div className="status">{status}</div>
+        <div className="status">{this.getStatus()}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -58,6 +50,15 @@ class Board extends Component {
         </div>
       </div>
     );
+  }
+
+  getStatus() {
+    const winner = calculateWinner(this.state.squares);
+    if (winner) {
+      return `Winner: ${winner}`;
+    } else {
+      return `Next player: ${this.currentPlayer()}`;
+    }
   }
 
   currentPlayer() {
